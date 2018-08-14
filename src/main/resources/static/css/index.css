@@ -1,0 +1,303 @@
+html, body,.warpper{
+	width: 100%;
+	height: 100%;
+}
+.header{
+	width: 100%;
+	height: 44px;
+	background: #337ab7;
+}
+.header h1{
+	padding: 10px;
+	font-size: 24px;
+	line-height: 24px;
+	color: #fff;
+}
+.header .search_container{
+	position: relative;
+	width: 140px;
+	text-align: center;
+	margin-right: 20px;
+	line-height: 44px;
+	color: #fff;
+	cursor: pointer;
+}
+
+
+.header .data_layout{
+	display: none;
+	position: absolute;
+	width: 100%;
+	z-index: 4;
+	background: #438eb9;
+	color: #fff;
+}
+.header .data_layout .data_layout_item{
+	line-height: 34px;
+	border-bottom: 1px dashed #ccc;
+}
+.header .data_layout .data_layout_item:last-child{
+	border-bottom: none;
+}
+
+
+/*  身体  */
+.main{
+	width: 100%;
+	height: calc(100% - 88px);
+	position: relative;
+}
+
+/* nav start */
+.nav{
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-sizing: border-box;
+	width: 250px;
+	height: 100%;
+	background: #f2f2f2;
+	border-right: 1px solid #ccc;
+}
+.nav .nav_top{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background: #5cb85c;
+}
+.nav_top .nav_title{
+	margin-left: 20px;
+	line-height: 40px;
+	font-size: 18px;
+	color: #fff;
+}
+
+
+.nav .nav_main{
+	width: 100%;
+	height: 100%;
+}
+
+.nav_main .nav_filter{
+	height: 40px;
+	line-height: 40px;
+	background: #fcf8e3;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #ccc;
+}
+.nav_filter .filter_select{
+	margin: 0 10px;
+}
+.nav_filter .filter_select label{
+	display: block;
+	height: 38px;
+	line-height: 38px;
+}
+.nav_filter .filter_input{
+	width: 130px;
+	height: 24px;
+	margin-top: 7px;
+	line-height: 24px;
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 0 2px;
+	font-size: 14px;
+}
+.nav_filter .filter_btn{
+	height: 26px;
+	padding: 0 4px;
+	margin-top: 7px;
+	line-height: 24px;
+	background: #fff;
+	border: 1px solid #ccc;
+	margin-right: 6px;
+	color: #15428b;
+	cursor: pointer;
+}
+
+
+.nav_main .nav_container{
+	padding-left: 10px;
+	height: calc(100% - 40px);
+	overflow: auto;
+}
+.nav_container .nav_level_one{
+	display: block;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	font-weight: 200;
+	color: #333;
+}
+.nav_container .nav_small_title{
+	width: 100%;
+}
+.nav_container .nav_small_title  .nav_level_two{
+	width: 200px;
+	position: relative;
+	margin-left: 20px;
+	line-height: 30px;
+	font-size: 14px;
+}
+.nav_container .nav_small_title  .nav_level_two .nav_level_two_text{
+	display: inline-block;
+	vertical-align: middle;
+	width: 170px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.nav_container .nav_small_title  .nav_level_two:hover{
+	background: #F0F7FC;
+}
+.nav_container .nav_small_title  .nav_level_two:before{
+	position: absolute;
+	left: -20px;
+	top: -15px;
+	content: "";
+	height: 30px;
+	border-left: 1px dashed #ccc;
+}
+.nav_container .nav_small_title  .nav_level_two:after{
+	position: absolute;
+	left: -20px;
+	top: 15px;
+	content: "";
+	width: 15px;
+	border-top: 1px dashed #ccc;
+}
+/* nav end */
+
+
+
+/*  片段  */
+.main .main_container{
+	padding-left: 250px;
+	height: 100%;
+}
+.main_container .main_title{
+	display: table;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background: #fff;
+	font-size: 18px;
+	color: #15428b;
+}
+.main_title .fa{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-left:10px;
+	margin-right:10px;
+	line-height: 15px;
+	text-align: center;
+	background: #fff;
+	border:1px solid #ccc;
+	font-size: 14px;
+	color: #15428b;
+	cursor: pointer;
+}
+
+.main_container .content{
+	height: 100%;
+}
+.main_content{
+	margin:10px;
+	max-height: calc(100% - 60px);
+	overflow: auto;
+}
+.code_table{
+	box-sizing: border-box;
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+}
+.code_table_head{
+	display: table-header-group;
+}
+.code_table_head .code_table_tr .code_table_td p{
+	font-size: 16px;
+	font-weight: bold;
+}
+.code_table_body{
+	display: table-row-group;
+	font-size: 14px;
+}
+.code_table_tr{
+	display: table-row;
+}
+.code_table_td{
+	display: table-cell;
+	padding: 0 2px;
+	text-align: left;
+	border: 1px solid #ccc;
+}
+.code_table_td p{
+	word-break: break-all;
+	line-height: 34px;
+	padding: 0 4px;
+}
+.code_table_body .code_table_tr:nth-child(n){
+	background: #f2f2f2;
+}
+.code_table_body .code_table_tr:nth-child(2n){
+	background: #fff;
+}
+.code_table_body .code_table_tr:hover{
+	background: #ccc;
+}
+/* footer */
+.footer{
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 200;
+	background: #fff;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+
+/* 弹窗内容样式 */
+.add_data_main{
+	width: 468px;
+	height: 440px;
+	overflow: auto;
+}
+.add_data_form_item{
+	margin-bottom: 10px;
+}
+.add_data_form_label{
+	width: 120px;
+	height: 38px;
+	line-height: 38px;
+	text-align: right;
+}
+.add_data_form_block{
+	margin-left: 140px;
+	height: 38px;
+}
+.add_data_form_normal_input{
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding-left: 10px;
+	background: #fff;
+	line-height: 36px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.add_data_dropdown{
+	width: 170px;
+}
+
+.path_text{
+	line-height: 38px;
+	word-break: break-all;
+}

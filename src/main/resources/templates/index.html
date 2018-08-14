@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>代码生成器</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css"></link>
+	<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="css/bootstrap-dialog.min.css"></link>
+	<link rel="stylesheet" href="css/reset.css"></link>
+
+	<link rel="stylesheet" href="css/index.css"></link>
+
+	<script src="core/vue.min.js"></script>
+	<script src="core/axios.min.js"></script>
+
+	<script src="core/jquery-3.2.0.min.js"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-dialog.min.js"></script>
+	<script src="js/bootstrap-dialog-extend.js"></script>
+	<script src="js/hcheck-1.2.0.js"></script>
+	<script src="js/index.js"></script>
+
+</head>
+<body>
+<div class="warpper" id="warpper">
+	<div class="header clearfix">
+		<h1 class="fl">
+			<i class="fa fa-leaf"></i> 代码生成器
+		</h1>
+		<div id="search_container" class="search_container fr">
+			<i class="fa fa-dashboard"></i>  
+				<font>{{current_datasource.name}}</font>
+			<ul id="data_layout" class="data_layout">
+				<li class="data_layout_item add_data_layer">
+					增加数据源
+				</li>
+				<li class="data_layout_item" @click="changeConn">
+					切换数据源
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main">
+		<div class="nav" id="nav">
+			<div class="nav_main">
+				<div class="nav_filter clearfix">
+					<div class="filter_select fl">
+						<label><input id="select_all" type="checkbox" />全选</label>
+					</div>
+					<input id="filter_input" class="filter_input fl" type="text" placeholder="表过滤" />
+					<input class="filter_btn fr" type="button" @click="generator()" value="生成" />
+				</div>
+				<div class="nav_container" id="nav_container">
+					<a class="nav_level_one" href="javascript:;"><i class="fa fa-th-large"></i> 数据表</a>
+					<ul class="nav_small_title">
+						<li v-for="(item, index) in msg" class="nav_level_two" >
+							<label :title="item.key">
+								<input type="checkbox" :value="item.val" v-model="select_tables" /> <span class="nav_level_two_text" @click="render(item)">{{item.key}}</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main_container" id="main_container">
+			<div class="content">
+				<div class="main_title"><i id="nav_close" class="fa fa-angle-double-left"></i>片段</div>
+				<div class="main_content">
+					<div class="code_table">
+						<div class="code_table_head">
+							<div class="code_table_tr">
+								<div class="code_table_td"><p>字段名称</p></div>
+								<div class="code_table_td"><p>字段类型</p></div>
+								<div class="code_table_td"><p>字段长度</p></div>
+								<div class="code_table_td"><p>字段精度</p></div>
+								<div class="code_table_td"><p>主键</p></div>
+								<div class="code_table_td"><p>备注</p></div>
+							</div>
+						</div>
+						<div class="code_table_body">
+							<div v-for="item in renderMsg" class="code_table_tr">
+								<div class="code_table_td"><p>{{item.name}}</p></div>
+								<div class="code_table_td"><p>{{item.type}}</p></div>
+								<div class="code_table_td"><p>{{item.len}}</p></div>
+								<div class="code_table_td"><p>{{item.precision}}</p></div>
+								<div class="code_table_td"><p><input type="checkbox" :checked="item.primaryKey" disabled /></p></div>
+								<div class="code_table_td"><p>{{item.remark}}</p></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		代码生成器
+	</div>
+<!-- 弹框开始 -->
+<div class="layer_defined" style="display: none;">
+    <div class="path_data_main layer_generator">
+			<ul class="add_data_form">
+				<li class="add_data_form_item clearfix">
+					<label class="add_data_form_label fl">需生成的表</label>
+					<div class="add_data_form_block">
+						<p class="path_text" id="tables"></p>
+					</div>
+				</li>
+				<li class="add_data_form_item clearfix">
+				    <label class="add_data_form_label fl">实体包名</label>
+				    <div class="add_data_form_block"><input class="add_data_form_normal_input" id="packageName" type="text" value="com.ecej.cc.api.po.generated.callcenter" /></div>
+				</li>
+			</ul>
+		</div>
+</div>
+
+<div class="layer_defined" style="display: none;">
+	<div class="add_data_main layer_addConn">
+		<form id="form">
+			<ul class="add_data_form">
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">保存名称</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="text" name="name" value="callcenter" />
+					</div></li>
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">主机或IP地址</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="text" name="ip" value="10.4.89.151" />
+					</div></li>
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">数据库名称</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="text" name="dbName" value="ecejcallcenter" />
+					</div></li>
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">端口号</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="text" value="3306" name="port" />
+					</div></li>
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">用户名</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="text" name="userName" value="usecct" />
+					</div></li>
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">密码</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="password" name="pwd" value="PjQ0zBxxduxjaksi0" />
+					</div></li>
+				<li class="add_data_form_item clearfix"><label
+					class="add_data_form_label fl">编码</label>
+				<div class="add_data_form_block">
+						<input class="add_data_form_normal_input" type="text" name="chartSet" value="UTF-8" readonly />
+					</div></li>
+			</ul>
+			<button type="button" class="btn btn-primary" id="btn_test_conn">测试链接</button>
+		</form>
+	</div>
+</div>
+<div  class="layer_defined" style="display: none;">
+	<div class=" layer_changeConn" style="height:470px; overflow:auto;">
+		 <div class="code_table">
+			<div class="code_table_head">
+				<div class="code_table_tr">
+						<div class="code_table_td"><p>链接名称</p></div>
+						<div class="code_table_td"><p>ip</p></div>
+						<div class="code_table_td"><p>端口</p></div>
+						<div class="code_table_td"><p>数据库名称</p></div>
+						<div class="code_table_td"><p>用户名</p></div>
+						<div class="code_table_td"><p>字符集</p></div>
+						<div class="code_table_td"><p>选择</p></div>
+						<div class="code_table_td"><p>删除</p></div>
+				</div>
+			</div>
+				<div class="code_table_body">
+					<div v-for="item in conns" class="code_table_tr">
+						<div class="code_table_td"><p>{{item.name}}</p></div>
+						<div class="code_table_td"><p>{{item.ip}}</p></div>
+						<div class="code_table_td"><p>{{item.port}}</p></div>
+						<div class="code_table_td"><p>{{item.dbName}}</p></div>
+						<div class="code_table_td"><p>{{item.userName}}</p></div>
+						<div class="code_table_td"><p>{{item.chartSet}}</p></div>
+						<div class="code_table_td"><p><input type="checkbox" class="changeConn" :value="item.key" :checked="item.key==current_datasource.key" />
+						</p></div>
+						<div class="code_table_td"><p><i class="fa fa-trash-o fa-lg delConn" :def-val="item.key"></i></p></div>
+					</div>
+				</div>
+			</div>
+	 </div>
+</div>
+</div>
+</body>
+</html>

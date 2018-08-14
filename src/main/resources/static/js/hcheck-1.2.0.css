@@ -1,0 +1,66 @@
+span.hcheck{
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 0 1px -16px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    cursor: pointer;
+}
+input[type=radio] ~ span.hcheck{
+    border-radius: 50%;
+}
+input[type=radio],input[type=checkbox]{
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    margin: -2px 0 1px;
+    opacity: 0;
+    filter:alpha(opacity: 0);
+    cursor: pointer;
+}
+input[type=radio]{
+    border-radius: 50%;
+}
+input[type=radio]:disabled,input[type=checkbox]:disabled{
+    cursor: not-allowed;
+}
+
+input[type="checkbox"]:checked ~ span.hcheck, input[type="radio"]:checked ~ .hcheck{
+    position: relative;
+    border-color: #6876da;
+    background: #6876da;
+}
+input[type="checkbox"]:checked ~ span.hcheck:after, input[type="radio"]:checked ~ span.hcheck:after{
+    display: block;
+    content: "\2714";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+}
+input[type="radio"]:checked ~ span.hcheck:after{
+    border-radius: 50%;
+}
+input[type="checkbox"]:checked:disabled ~ span.hcheck, input[type="radio"]:checked:disabled ~ .hcheck{
+    cursor: not-allowed;
+}
+input[type="checkbox"]:checked:disabled:hover ~ span.hcheck, input[type="radio"]:checked:disabled:hover ~ .hcheck{
+    cursor: not-allowed;
+    border-color: #6876da;
+}
+
+input[type="checkbox"]:disabled ~ span.hcheck, input[type="radio"]:disabled ~ .hcheck{
+    cursor: not-allowed;
+}
+input[type="checkbox"]:hover ~ span.hcheck, input[type="radio"]:hover ~ span.hcheck{
+    border-color: #6876da;
+}
+input[type="checkbox"]:disabled:hover ~ span.hcheck, input[type="radio"]:disabled:hover ~ .hcheck{
+    border-color: #e5e5e5;
+}
