@@ -2,8 +2,9 @@ package com.generator.utils;
 
 import java.util.ArrayList;
 import org.springframework.ui.ModelMap;
-import com.ecej.nove.base.page.QueryResult;
-import com.ecej.nove.base.po.ResultModel;
+
+import com.generator.common.QueryResult;
+import com.generator.common.ResultModel;
 
 /**
  * 

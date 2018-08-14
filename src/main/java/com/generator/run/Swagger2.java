@@ -36,7 +36,7 @@ public class Swagger2
     {
         return new ApiInfoBuilder()
                 .title("代码生成器").description("轻松实现entity、mapper文件等")
-                .contact("李景辉")
+                .contact("steven")
                 .build();
     }
 }

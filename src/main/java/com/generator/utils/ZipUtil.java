@@ -255,7 +255,7 @@ public class ZipUtil
     
     public static void main(String[] args)
     {
-        String sourceFilePath = "E:\\Java\\workspace\\GitLab\\ecej-projects-parent\\project-generator\\target\\classes\\static\\file\\generator";
+        String sourceFilePath = "E:\\Java\\workspace\\GitLab\\steven-projects-parent\\project-generator\\target\\classes\\static\\file\\generator";
         String zipFilePath = (new File(sourceFilePath)).getParent();
         String fileName = "generator.zip";
         try

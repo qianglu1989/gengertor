@@ -9,7 +9,8 @@ import java.util.Map;
 import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.ecej.nove.utils.common.PropertyConfigUtils;
+
+import com.generator.common.PropertyConfigUtils;
 import com.generator.framework.AbstractApplicationTask;
 import com.generator.framework.ApplicationContext;
 import com.generator.framework.Constants;
@@ -41,7 +42,7 @@ public class EntityTask extends AbstractApplicationTask
         logger.info("实体类信息初始化");
         
         packageName = (String) context.getAttribute("packageName");
-        packageName = StringUtil.isEmpty(packageName) ? "com.ecej.demo" : packageName;
+        packageName = StringUtil.isEmpty(packageName) ? "com.steven.demo" : packageName;
         String fileBasePath = (String) context.getAttribute("generator.path");
         
         Boolean result = combineInfo(context);

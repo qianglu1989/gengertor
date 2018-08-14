@@ -46,7 +46,7 @@ public class EntityHandler extends BaseHandler<EntityInfo>
             sb.append("    /**\r\n     *").append(propRemarks.get(propName)).append("    db_column:").append(columnName.toLowerCase()).append("\r\n     */\r\n");
             if(entityInfo.getPrimaryKey().equals(columnName))
             {
-                sb.append("    @Id\r\n");
+                //sb.append("    @Id\r\n");
             }
             sb.append("    private ").append(propType).append(" ").append(propName).append(";\r\n");
             

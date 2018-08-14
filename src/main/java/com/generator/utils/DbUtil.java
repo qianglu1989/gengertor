@@ -48,7 +48,7 @@ public class DbUtil
      */
     public static Connection getConn()
     {
-        String jdbcUrl = "jdbc:mysql://10.4.89.151:3306/ecejcallcenter?useUnicode=yes&amp;characterEncoding=UTF8&amp;allowMultiQueries=true";
+        String jdbcUrl = "jdbc:mysql://10.4.89.151:3306/stevencallcenter?useUnicode=yes&amp;characterEncoding=UTF8&amp;allowMultiQueries=true";
         String userName = "usecct";
         String password = "PjQ0zBxxduxjaksi0";
         return getConn(jdbcUrl, userName, password);

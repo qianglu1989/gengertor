@@ -59,8 +59,8 @@ public class IndexController
 {
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
     private static ApplicationContext context = new SimpleApplicationContext();
-    private String path = System.getProperty("java.io.tmpdir") + "project-generator/conn.s";
-    private String generatorpath = System.getProperty("java.io.tmpdir") + "project-generator/file/generator/";
+    private String path = System.getProperty("java.io.tmpdir") +File.separator+ "project-generator/conn.s";
+    private String generatorpath = System.getProperty("java.io.tmpdir") +File.separator+ "project-generator/file/generator/";
     
     @ApiIgnore()
     @GetMapping("/")
@@ -151,8 +151,6 @@ public class IndexController
      * @Description: 测试Connection链接
      * @author Jack
      * @date 2017年10月9日 下午3:26:06
-     *
-     *       { "chartSet": "UTF8", "dbName": "ecejcallcenter", "ip": "10.4.89.151", "key": "1", "name": "呼叫中心数据库", "port": "3306", "pwd": "PjQ0zBxxduxjaksi0", "sqlType": 0, "userName": "usecct" }
      *
      * @return
      */

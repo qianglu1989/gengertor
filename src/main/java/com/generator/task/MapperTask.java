@@ -7,7 +7,8 @@ import java.util.Map.Entry;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.ecej.nove.utils.common.PropertyConfigUtils;
+
+import com.generator.common.PropertyConfigUtils;
 import com.generator.entity.ColumnEntity;
 import com.generator.entity.MapperEntity;
 import com.generator.entity.TableEntity;
@@ -40,7 +41,7 @@ public class MapperTask extends AbstractApplicationTask
         logger.info("Mapper类信息初始化");
         
         packageName = (String) context.getAttribute("packageName");
-        packageName = StringUtil.isEmpty(packageName) ? "com.ecej.demo" : packageName;
+        packageName = StringUtil.isEmpty(packageName) ? "com.steven.demo" : packageName;
         String fileBasePath = (String) context.getAttribute("generator.path");
         Boolean result = combineInfo(context);
         if(result)

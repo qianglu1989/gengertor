@@ -74,7 +74,8 @@ public class InitTask extends AbstractApplicationTask
             if(StringUtil.isEmpty(primaryKey))
             {
                 logger.error("{}主键值不能为空", tableName);
-                return false;
+                continue;
+//                return false;
             }
             tableInfo.setPrimaryKey(primaryKey);
             
